@@ -3,12 +3,11 @@ class Solution:
         
         letters = []
         ans = ""
-        # comping chars to list
+        # compering chars to list
         for string in t:
             letters.append(string)
+        # removing elements form t   
         for string in s:
             letters.remove(string)
-        for char in letters:
-            ans += char
-        return ans
-            
+        
+        return letters[0]
