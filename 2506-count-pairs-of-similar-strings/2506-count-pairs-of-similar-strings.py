@@ -13,6 +13,6 @@ class Solution:
         ans = 0
         for index,word in enumerate(words):
             for val in words[index+1:]:
-                if self.compair(word,val):
+                if set(word) == set(val):
                     ans += 1
         return ans
