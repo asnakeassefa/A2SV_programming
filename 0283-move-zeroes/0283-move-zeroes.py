@@ -8,7 +8,7 @@ class Solution:
         for x in range(len(nums)):
             if nums[x] == 0:
                 index.append(x)
-        print(index)
+        
         for x in range(len(index)):
             nums.append(nums.pop(index[x] - n))
             n += 1
