@@ -3,13 +3,13 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        n = 0
-        index = [] * nums.count(0)
-        for x in range(len(nums)):
-            if nums[x] == 0:
-                index.append(x)
+        count = nums.count(0)
         
-        for x in range(len(index)):
-            nums.append(nums.pop(index[x] - n))
-            n += 1
+        for i in range(count):
+            nums.remove(0)
+        
+        for i in range(count):
+            nums.append(0)
+            
+        
         
