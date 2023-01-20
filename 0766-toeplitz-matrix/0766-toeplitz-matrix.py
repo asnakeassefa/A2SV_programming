@@ -10,8 +10,5 @@ class Solution:
                 array[i-j].add(matrix[i][j])
                 if len(array[i-j]) > 1:
                     return False
-        # for val in array.values():
-        #     if len(val) > 1:
-        #         ans = False
-                
+        
         return True
