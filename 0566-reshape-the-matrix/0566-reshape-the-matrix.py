@@ -1,13 +1,13 @@
 class Solution:
     def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
         newArray = []
-        newCol = 0
         row = len(mat)
         col = len(mat[0])
         temp = []
+        # return if orginal array if the condition is not satisfied
         if row * col != r * c:
             return mat
-        
+        # convert the array
         for i in range(row):
             for j in range(col):
                 if len(temp) == c:
