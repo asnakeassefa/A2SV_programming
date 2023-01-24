@@ -2,9 +2,8 @@ class Solution:
     def replaceElements(self, arr: List[int]) -> List[int]:
         length = len(arr)
         ans = []
-        arr.reverse()
-        for i in range(length):
-            if i == 0:
+        for i in range(length-1,-1,-1):
+            if i == length-1:
                 ans.append(-1)
                 temp = arr[i]
             else:
