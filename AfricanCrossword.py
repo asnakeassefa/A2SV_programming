@@ -1,10 +1,11 @@
 from collections import defaultdict
-
+# checks the grid
 def encrypted(grid):
 	row = len(grid)
 	col = len(grid[0])
 	newWord = []
 	ans = ""
+	#remove duplicate elements the row
 	for rowidx in range(row):
 		temp = []
 		for colidx in range(col):
@@ -13,7 +14,8 @@ def encrypted(grid):
 			else:
 				temp.append(grid[rowidx][colidx])
 		newWord.append(temp)
-	# print(newWord)
+
+	# removes duplicate elements in col
 	for colidx in range(col):
 		temp = ""
 		colCount = defaultdict(int)
@@ -24,13 +26,16 @@ def encrypted(grid):
 		for rowidx in range(row):
 			if colCount[grid[rowidx][colidx]] > 1:
 				newWord[rowidx][colidx] = "_"
-	# print(newWord)
+	
+	#build the answer
 	ans = ""
 	for row in range(len(newWord)):
 		for col in range(len(newWord[0])):
 			if newWord[row][col] != "_":
 				ans += newWord[row][col]
 	return ans
+
+# recive testcase
 row,col = map(int,input().split())
 grid = []
 for i in range(row):
