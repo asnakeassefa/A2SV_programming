@@ -1,9 +1,9 @@
 class Solution:
     def smallerNumbersThanCurrent(self, nums: list[int]) -> list[int]:
-        length = len(nums)
-        count = [0]*length;
-        for x in range(length):
-            for y in range(length):
-                if(nums[x] > nums[y]):
-                    count[x] += 1
-        return count
+        counter = defaultdict(int)
+        newNums = sorted(nums)
+        for i,num in enumerate(newNums):
+            if num not in counter:
+                counter[num] = i
+        
+        return [counter[num] for num in nums]
