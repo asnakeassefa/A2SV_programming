@@ -11,4 +11,6 @@ class Solution:
         for i in range(length):
             ans += str(nums[i])
             
-        return str(int(ans))
+        if ans[0] == "0":
+            return "0"
+        return ans
