@@ -2,8 +2,7 @@ class Solution:
     def maxCoins(self, piles: List[int]) -> int:
         ans = 0
         length = len(piles)
-        piles.sort()
-        piles.reverse()
+        piles.sort(reverse = True)
         i = 1
         count = 0
         while i < length:
