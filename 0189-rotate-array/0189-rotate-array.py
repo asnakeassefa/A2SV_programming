@@ -9,10 +9,9 @@ class Solution:
         
         for i in range(right//2):
             nums[left + i],nums[(length-1)-i] = nums[(length-1)-i],nums[left + i]
-        print(nums)
+        # print(nums)
         for i in range(left//2):
             nums[i],nums[(left-1)-i] = nums[(left-1)-i],nums[i]
-        print(nums)
+        # print(nums)
         for i in range((length//2)):
             nums[i],nums[(length-1)-i] = nums[(length-1)-i],nums[i]
-        print(nums)
