@@ -15,10 +15,11 @@ class Solution:
             slow = slow.next
             if fast == slow:
                 break
-        if not fast or not fast.next:
-            if fast and not fast.next:
-                return fast.next
+        if not fast:
             return fast
+        elif not fast.next:
+            return fast.next
+        
         while slow and required:
             if slow == required:
                 return required
