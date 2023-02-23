@@ -12,8 +12,6 @@ class Solution:
                 ans = min(ans,ptr2-ptr1+1)
                 Sum -= nums[ptr1]
                 ptr1 += 1
-            # if Sum == target:
-            #     print("in")
             ptr2 += 1
         if ans == float('inf'):
             return 0
