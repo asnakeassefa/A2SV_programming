@@ -6,22 +6,13 @@ class Solution:
         ans = 0
         
         subArray = defaultdict(int)
-        subArray[s[right]] += 1
-        right += 1
-        # iteratring through the string
-        while right < length:
-            temp = max(subArray.values())
-            if (right- left) - temp > k:
-                MAX = temp + k
-                ans = max(ans,MAX)
+    
+        for right in range(length):
+            subArray[s[right]] += 1
+            most_freq = max(subArray.values())
+            
+            if right - left + 1 - most_freq > k:
                 subArray[s[left]] -= 1
                 left += 1
-            else:
-                subArray[s[right]] += 1
-                right += 1
-        temp = max(subArray.values()) + k
-        if temp > length:
-            ans = length
-        else:
-            ans = max(ans,temp)
-        return ans
+        
+        return length - left
