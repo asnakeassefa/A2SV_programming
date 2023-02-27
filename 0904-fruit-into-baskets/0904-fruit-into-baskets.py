@@ -9,9 +9,8 @@ class Solution:
         for right in range(length):
             fruitdict[fruits[right]] = right
             if len(fruitdict) > 2:
-                key = min(fruitdict, key = fruitdict.get)
-                least = fruitdict[key]
-                del fruitdict[key]
+                least = min(fruitdict.values())
+                del fruitdict[fruits[least]]
                 left = least
                 left += 1
             ans = max(ans,right-left+1)
