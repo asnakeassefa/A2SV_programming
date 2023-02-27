@@ -14,7 +14,6 @@ class Solution:
                 del fruitdict[key]
                 left = least
                 left += 1
-            print(fruitdict)
             ans = max(ans,right-left+1)
                 
         return ans
