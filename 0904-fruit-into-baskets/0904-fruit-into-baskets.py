@@ -4,14 +4,17 @@ class Solution:
         left = 0
         ans = 0
         length = len(fruits)
-        fruitdict = defaultdict(int)
+        fruitdict = Counter()
         
         for right in range(length):
             fruitdict[fruits[right]] = right
             if len(fruitdict) > 2:
-                least = min(fruitdict.values())
-                del fruitdict[fruits[least]]
+                key = min(fruitdict, key = fruitdict.get)
+                least = fruitdict[key]
+                del fruitdict[key]
                 left = least
                 left += 1
+            print(fruitdict)
             ans = max(ans,right-left+1)
+                
         return ans
