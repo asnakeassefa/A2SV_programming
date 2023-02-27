@@ -4,8 +4,9 @@ class Solution:
         Sum = 0
         odds = defaultdict(int)
         odds[0] = 1
+        length = len(nums)
         
-        for i in range(len(nums)):
+        for i in range(length):
             if nums[i] % 2==0:
                 nums[i] = 0
             else:
