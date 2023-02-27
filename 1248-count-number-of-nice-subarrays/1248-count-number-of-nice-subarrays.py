@@ -5,17 +5,9 @@ class Solution:
         odds = defaultdict(int)
         odds[0] = 1
         length = len(nums)
-        
-        for i in range(length):
-            if nums[i] % 2==0:
-                nums[i] = 0
-            else:
-                nums[i] = 1
-        
         ans = 0
-        
         for num in nums:
-            Sum += num
+            Sum += num % 2
             case = Sum - k
             ans += odds[case]
             odds[Sum] += 1
