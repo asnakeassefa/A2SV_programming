@@ -4,10 +4,11 @@ class Solution:
         post = []
         length = len(nums)
         temp = 1
+        #build pre mul
         for num in nums:
             temp *= num
             pre.append(temp)
-        
+        #build post mul
         temp = 1
         for i in range(length-1,-1,-1):
             temp *= nums[i]
@@ -15,7 +16,6 @@ class Solution:
         post.reverse()
         post.append(1)
         ans = []
-        print(post)
         for i in range(length):
             ans.append(pre[i] * post[i+1])
         return ans
