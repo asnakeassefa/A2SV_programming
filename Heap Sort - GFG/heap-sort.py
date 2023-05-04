@@ -2,12 +2,11 @@
 
 class Solution:
     #Heapify function to maintain heap property.
-    def heapify_up(self,arr,i):
+    def heapify(self,arr,n):
         # code here
-        parent = (i - 1)//2
-        if arr[i] > arr[parent] and i:
-            arr[i],arr[parent] = arr[parent],arr[i]
-            self.heapify_up(arr,parent)
+        starting = (len(arr)//2) - 1
+        for i in range(starting,-1,-1):
+            self.heapify_down(arr,n,i)
     def heapify_down(self,arr,n,curr):
         Max_val = curr
         left = curr * 2 + 1
@@ -25,20 +24,13 @@ class Solution:
         
     def buildHeap(self,arr,n):
         # # code here
-        newarr = [arr[0]]
-        for i,val in enumerate(arr):
-            if i == 0:
-                continue
-            newarr.append(val)
-            self.heapify_up(newarr,len(newarr)-1)
-        return newarr
+        self.heapify(arr,len(arr))
     #Function to sort an array using Heap Sort.    
     def HeapSort(self, arr, n):
         #code here
         length = len(arr)
-        values = self.buildHeap(arr,len(arr))
-        for i,val in enumerate(values):
-            arr[i] = val
+        self.buildHeap(arr,length)
+        # print(arr)
         i = 1
         while i < len(arr):
             arr[0],arr[length-i] = arr[length-i],arr[0]
