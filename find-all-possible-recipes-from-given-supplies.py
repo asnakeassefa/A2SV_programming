@@ -4,8 +4,8 @@ class Solution:
         store = defaultdict(int)
         setedRecipes = set(recipes)
         supplies = set(supplies)
-        for wanted in recipes:
-            store[wanted] = 0
+        for food in recipes:
+            store[food] = 0
         
         for i,ingredient in enumerate(ingredients):
             for product in ingredient:
