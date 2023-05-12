@@ -1,28 +1,33 @@
 from typing import List
+from collections import deque
 class Solution:
-    def dfs(self,graph,color,curr, parent):
-        if color[curr] == 2:
-            return False
-        if color[curr] == 1:
-            return True
-        
-        color[curr] = 1
-        for val in graph[curr]:
-            if val != parent:
-                cycle = self.dfs(graph,color,val, curr)
-                if cycle:
-                    return True
-        color[curr] = 2
-        return False
+    
     #Function to detect cycle in an undirected graph.
 	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
 		#Code here
-        color = [0] * V
+		indeg = [0] * V
+	    for i,nodes in enumerate(adj):
+	        for node in nodes:
+	            indeg[node] += 1
+	      
+        queue = deque()
         for i in range(V):
-            cycle = self.dfs(adj,color,i, -1)
-            if cycle:
-                return True
+            if indeg[i] < 2:
+                queue.append(i)
         
+        counter = 0
+        while queue:
+            node = queue.popleft()
+            
+            counter += 1
+            for val in adj[node]:
+                # for val in values:
+                    indeg[val] -= 1
+                    if indeg[val] == 1:
+                        queue.append(val)
+                
+        if counter != V:
+            return True
         return False
 #{ 
  # Driver Code Starts
