@@ -5,16 +5,21 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def __init__(self):
+        self.val = None
     def inOrder(self,root):
         if not root:
-            return
-        self.inOrder(root.left)
-        self.arr.append(root.val)
-        self.inOrder(root.right)
-        
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        self.arr = []
-        self.inOrder(root)
-        if self.arr == sorted(self.arr) and len(set(self.arr)) == len(self.arr):
             return True
-        return False
+        left = self.inOrder(root.left)
+
+        if self.val != None:
+            if self.val >= root.val:
+                return False
+            self.val = root.val
+        else:
+            self.val = root.val
+            
+        right = self.inOrder(root.right)
+        return right and left
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        return self.inOrder(root)
