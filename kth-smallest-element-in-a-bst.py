@@ -5,13 +5,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def inorderTravers(self,root,arr):
-        if not root:
-            return
-        self.inorderTravers(root.left,arr)
-        arr.append(root.val)
-        self.inorderTravers(root.right,arr)
+    
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        arr = []
-        self.inorderTravers(root,arr)
-        return arr[k-1]
+        self.count = k
+        self.res = 0
+        def inorderTravers(root):
+            if not root:
+                return
+            inorderTravers(root.left)
+            self.count -= 1
+            if self.count == 0:
+                self.res = root.val
+            inorderTravers(root.right)
+        inorderTravers(root)
+        return self.res
