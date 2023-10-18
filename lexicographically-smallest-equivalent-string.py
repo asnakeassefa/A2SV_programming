@@ -1,30 +1,45 @@
 class UnionFind:
     def __init__(self):
-        self.rep = {chr(ord('a')+i):chr(ord('a')+i) for i in range(27)}
+        self.rep = {i:i for i in range(26)}
+        self.size = {i:1 for i in range(26)}
     def find(self, x):
-        if self.rep[x] == x:
+        parent = self.rep[x]
+        while parent != self.rep[parent]:
+            parent = self.rep[parent]
+        if x < parent:
+            self.rep[x] = x
+            self.rep[parent] = x
             return x
-        y = self.find(self.rep[x])
-        self.rep[x] = y
-        return y
+        while x != parent:
+            x_parent = self.rep[x]
+            self.rep[x] = parent
+            x = x_parent
+        
+        return parent
+		
     def union(self, x, y):
-        xrep = self.find(x)
-        yrep = self.find(y)
+        x_rep = self.find(x)
+        y_rep = self.find(y)
+
+        if x_rep == y_rep:
+            return
         
-        if self.rep[xrep] < self.rep[yrep]:
-            self.rep[yrep] = xrep
-        else:
-            self.rep[xrep] = yrep
-        
+        if x_rep > y_rep:
+            x_rep , y_rep = y_rep, x_rep
+
+        self.rep[y_rep] = x_rep
     def connected(self, x, y):
-        return self.find[x] == self.find[y]
+        return self.find(x) == self.find(y)
 class Solution:
     def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
         length = len(s1)
         UF = UnionFind()
         for i in range(length):
-            UF.union(s1[i],s2[i])
+            UF.union((ord(s1[i])-ord('a')),(ord(s2[i])-ord('a')))
+        s = "abcdefghijklmnopqrstuvwxyz"
         ans = ""
         for char in baseStr:
-            ans += UF.find(char)
+            idx = UF.find(ord(char)-ord('a'))
+            ans += s[idx]
+
         return ans
